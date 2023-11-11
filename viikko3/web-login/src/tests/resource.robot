@@ -9,6 +9,7 @@ ${HOME_URL}  http://${SERVER}
 ${LOGIN_URL}  http://${SERVER}/login
 ${REGISTER_URL}  http://${SERVER}/register
 ${ROOT_URL}  http://${SERVER}/
+${OHTU_URL}  http://${SERVER}/ohtu
 
 *** Keywords ***
 Open And Configure Browser
@@ -41,3 +42,6 @@ Go To Register Page
 
 Go To Main Page
     Go To  ${ROOT_URL}
+
+Go To Ohtu Page
+    Go To  ${OHTU_URL}

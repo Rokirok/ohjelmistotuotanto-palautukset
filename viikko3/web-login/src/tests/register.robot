@@ -33,6 +33,34 @@ Register With Nonmatching Password And Password Confirmation
     Submit Credentials
     Register Should Fail With Message  Entered passwords do not match
 
+Login After Successful Registration
+    Set Username  kalle
+    Set Password  kalle123
+    Set Password Confirmation  kalle123
+    Submit Credentials
+    Register Should Succeed
+    Go To Ohtu Page
+    Click Button  Logout
+    Login Page Should Be Open
+    Set Username  kalle
+    Set Password  kalle123
+    Click Button  Login
+    Main Page Should Be Open
+
+Login After Failed Registration
+    Set Username  kalle
+    Set Password  kalle123
+    Set Password Confirmation  kalle12
+    Submit Credentials
+    Register Should Fail With Message  Entered passwords do not match
+    Go To Login Page
+    Login Page Should Be Open
+    Set Username  kalle
+    Set Password  kalle123
+    Click Button  Login
+    Login Should Fail With Message  Invalid username or password
+
+
 *** Keywords ***
 Register Should Succeed
     Welcome Page Should Be Open
@@ -40,6 +68,11 @@ Register Should Succeed
 Register Should Fail With Message
     [Arguments]  ${message}
     Register Page Should Be Open
+    Page Should Contain  ${message}
+
+Login Should Fail With Message
+    [Arguments]  ${message}
+    Login Page Should Be Open
     Page Should Contain  ${message}
 
 Submit Credentials
